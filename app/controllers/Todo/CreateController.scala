@@ -17,7 +17,7 @@ import play.api.data.Forms._
  * application's home page.
  */
 @Singleton
-class TodoController @Inject()(
+class TodoCreateController @Inject()(
   val controllerComponents: ControllerComponents
 ) extends BaseController {
 
