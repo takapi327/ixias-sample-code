@@ -1,0 +1,29 @@
+@(vv: model.ViewValueTodoCreateForm)
+
+@common.Default(vv){
+  <div class="form">  
+   @todoCreateForm()
+  </div>
+}
+
+@todoCreateForm() = {
+  @helper.form(action = routes.TodoController.create()){
+    @helper.CSRF.formField
+      <div class="form__title">
+        @helper.inputText(
+          vv.form("title"),
+          '_label      -> "タイトル",
+          'placeholder -> "Todo タイトル"
+        )
+      </div>
+
+      <div class="form__body">
+        @helper.inputText(
+          vv.form("body"),
+          '_label      -> "タイトル",
+          'placeholder -> "Todo 内容
+        )
+      </div>
+      <button class="todo_btn">追加</button>
+  }
+}

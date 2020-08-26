@@ -1,0 +1,12 @@
+@(vv: model.ViewValueTodoCreate)
+
+@common.Default(vv){
+  @todoCreateComplete(vv.data)
+}
+
+@todoCreateComplete(todo: lib.model.Todo.FormValue) = {
+  <ul>
+    <li>@todo.title</li>
+    <li>@todo.body</li>
+  </ul>
+}
