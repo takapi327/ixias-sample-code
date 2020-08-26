@@ -6,9 +6,33 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
+# ~~~
+# Todoの作成を行うためのAPIを作成
+# URLを作成する時        -> このページを見ただけで何を行うためのAPIなのかが一眼でわかるように作成する
+# Controllerのメソッド名 -> 上記と同じでなんの処理を行うのかを一眼でわかるようにする
 
-GET     /todo/show/createform       controllers.todo.CreateController.createform
+# GET リクエストメソッドでTodoを作成するためのフォームを表示させる
+# URL 命名はtodoの作成用フォームを表示させるという感じ(英語はわからないので許してください)
+#
+# Controllerのメソッド名はshowCreatFormで作成用フォームを表示させるアクションを行う
+GET     /todo/show/createform       controllers.todo.CreateController.showCreateForm
+
+# POST 上記のフォームで入力した内容をデータベースへ送るリクエストメソッド
+# URL  命名はこのAPIにきた段階で登録処理は完了しているので、todoの作成処理が完了しているという感じ
+#
+# Controllerのメソッド名はcreatで新規Todoを作成するアクションを行う
 POST    /todo/complete/create       controllers.todo.CreateController.create
+
+# 処理の流れは登録フォームを作成するURLにアクセス(上記GETリクエストメソッドのURL)
+# 例: localhost:4200/todo/show/createform
+#　↓
+# フォームを入力し上記controllerのcreatメソッドにデータを送る
+#  ↓
+# createメソッドで登録処理が終わり、Resultで上記URLのページが表示される
+# 例: localhost:4200/todo/complete/create
+#
+# POSTの順番がわかりづらいかもしれませんが、色々触って慣れましょうw
+# ~~~
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

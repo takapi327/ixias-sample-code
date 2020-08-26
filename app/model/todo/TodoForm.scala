@@ -5,7 +5,6 @@ import play.api.data.Forms._
 import lib.model._
 
 object StatusValue {
-// formの作成
   val todoForm: Form[Todo.FormValue] = Form (
     mapping(
       "title" -> nonEmptyText,

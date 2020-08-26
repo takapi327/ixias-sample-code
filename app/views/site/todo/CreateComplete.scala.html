@@ -1,9 +1,21 @@
+@**
+* コントローラー側で引数に渡した値をここで引数として受け取りView内で使用していきます
+* 渡す値が増えればカンマで区切って引数を設定する
+*@
 @(vv: model.ViewValueTodoCreate)
 
+@**
+* @todoCreateComplete(vv.data)でメソッド化して処理を分けているのは、完全に個人のやり方です
+* 分けている理由としては、パッと見た時にHTMLの構造が短くすぐに理解できるようにするためです。
+* また表示と処理を分けることで保守が楽かなと思ったり、ここはお好みで。。。
+*
+*@
+@*HTML構造*@
 @common.Default(vv){
   @todoCreateComplete(vv.data)
 }
 
+@*表示させる処理*@
 @todoCreateComplete(todo: lib.model.Todo.FormValue) = {
   <ul>
     <li>@todo.title</li>
