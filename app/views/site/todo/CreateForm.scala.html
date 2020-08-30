@@ -7,6 +7,19 @@
 }
 
 @todoCreateForm() = {
+  @**
+   * @helper.form() ここでルーティングを設定入力した内容をどこに送りたいかで変わる
+   * 今回は新規作成したいので、createメソッドに渡して処理を行わせる
+   * 例えばこのルーティングをupdateメソッドに変更すれば入力した内容で更新する処理を行える。
+   *
+   * @helper.CSRF.formField
+   * この設定は、Playで設定されている、外部からPOSTで不正なデータを送りつけられないように、
+   * 信用できるフォームからしか送信処理を受け付けない処理に対して、このフォームは信頼できるのですと保証する設定です。
+   *
+   * フォームごとに設定することもできますし、application.confに
+   * play.filters.disabled += play.filters.csrf.CSRFFilter
+   * 上記を記入すればCSRF対策をOFFに設定できる。
+   *@
   @helper.form(action = routes.TodoController.create()){
     @helper.CSRF.formField
       <div class="form__title">
